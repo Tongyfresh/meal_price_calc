@@ -1,0 +1,51 @@
+# What is the price of a child's meal? 4.50
+# What is the price of an adult's meal? 9.00
+# How many children are there? 4
+# How many adults are there? 2
+
+# Subtotal: $36.00
+
+# What is the sales tax rate? 6
+# Sales Tax: $2.16
+# Total: $38.16
+
+# What is the payment amount? 40
+# Change: $1.84
+
+def meal_prices():
+    child_meal_price = float(input("What is the price of a child's meal? "))
+    adult_meal_price = float(input("What is the price of an adult's meal? "))
+    num_children = int(input("How many children are there? "))
+    num_adults = int(input("How many adults are there? "))
+    
+    subtotal = (child_meal_price * num_children) + (adult_meal_price * num_adults)
+    print(f"Subtotal: ${subtotal:.2f}")
+    return subtotal
+
+def add_sales_tax(subtotal):
+    tax_rate = float(input("What is the sales tax rate? "))
+    sales_tax = subtotal * (tax_rate / 100)
+    total = sales_tax + subtotal
+    print(f"Sales Tax: {sales_tax:.2f}")
+    print(f"Total: {total:.2f}")
+    return total
+
+def payment_amt(total):
+    while True:
+        dollars = float(input("What is the payment amount? "))
+        change = dollars - total
+        if change < 0:
+            print("Sorry, you don't have enough money!")
+            continue
+        else:
+            print(f"Change: {change:.2f}")
+            break
+
+def main():
+    subtotal = meal_prices()
+    total = add_sales_tax(subtotal)
+    payment_amt(total)
+
+
+main()
+
