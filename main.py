@@ -18,16 +18,31 @@ def meal_prices():
     num_children = int(input("How many children are there? "))
     num_adults = int(input("How many adults are there? "))
     
-    subtotal = (child_meal_price * num_children) + (adult_meal_price * num_adults)
-    print(f"Subtotal: ${subtotal:.2f}")
+    no_drinks = (child_meal_price * num_children) + (adult_meal_price * num_adults)
+    print(f"Subtotal: ${no_drinks:.2f}")
+
+    drink_price = float(1.35)
+    while True:
+        addons = input("Would you like to add any drinks? ").lower()
+        if addons not in ["y", "n", "yes", "no"]:
+            print("Sorry, invalid input")
+            continue
+        else:
+            how_many = int(input("How many? "))
+            subtotal = no_drinks + (how_many * drink_price)
+            difference = subtotal - no_drinks
+            print(f"Difference: ${difference:.2f}")
+            print(f"Subtotal: ${subtotal:.2f}")
+            break
+
     return subtotal
 
 def add_sales_tax(subtotal):
     tax_rate = float(input("What is the sales tax rate? "))
     sales_tax = subtotal * (tax_rate / 100)
     total = sales_tax + subtotal
-    print(f"Sales Tax: {sales_tax:.2f}")
-    print(f"Total: {total:.2f}")
+    print(f"Sales Tax: ${sales_tax:.2f}")
+    print(f"Total: ${total:.2f}")
     return total
 
 def payment_amt(total):
@@ -35,10 +50,10 @@ def payment_amt(total):
         dollars = float(input("What is the payment amount? "))
         change = dollars - total
         if change < 0:
-            print("Sorry, you don't have enough money!")
+            print(f"Sorry, you don't have enough money! You're short ${abs(change):.2f}.")
             continue
         else:
-            print(f"Change: {change:.2f}")
+            print(f"Change: ${change:.2f}")
             break
 
 def main():
