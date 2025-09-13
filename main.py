@@ -1,16 +1,6 @@
-# What is the price of a child's meal? 4.50
-# What is the price of an adult's meal? 9.00
-# How many children are there? 4
-# How many adults are there? 2
-
-# Subtotal: $36.00
-
-# What is the sales tax rate? 6
-# Sales Tax: $2.16
-# Total: $38.16
-
-# What is the payment amount? 40
-# Change: $1.84
+# My changes were pretty straightforward. Ask if they want drinks, require an input that's in the array 
+# and then prompt for how many
+# used similar logic to setup a not enough money check.
 
 def meal_prices():
     child_meal_price = float(input("What is the price of a child's meal? "))
